@@ -1,32 +1,43 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   List,
   Play,
   Clock,
-  Users,
   Star,
   CheckCircle,
   Lock,
   BookOpen,
-  Volume2,
   Trophy,
   Target,
-  Filter,
   Search,
-  BarChart3,
   Award,
   TrendingUp
 } from 'lucide-react';
+
+interface Lesson {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  sections: number;
+  estimatedTime: string;
+  difficulty: string;
+  xpReward: number;
+  icon: string;
+  isUnlocked: boolean;
+  prerequisites: string[];
+  khmerSample: string;
+}
 
 const BeginnerPage = () => {
   const [view, setView] = useState('grid');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState('all');
   const [completedLessons, setCompletedLessons] = useState(new Set(['alphabet', 'greetings']));
-  const [currentStreak, setCurrentStreak] = useState(7);
   const [totalXP, setTotalXP] = useState(245);
 
   const lessons = [
@@ -188,16 +199,7 @@ const BeginnerPage = () => {
   const progressPercentage = Math.round((completedCount / totalLessons) * 100);
   const unlockedLessons = lessons.filter(lesson => lesson.isUnlocked).length;
 
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty) {
-      case 'Essential': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'Beginner': return 'bg-green-100 text-green-800 border-green-200';
-      case 'Beginner+': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
-
-  const markAsCompleted = (lessonId) => {
+  const markAsCompleted = (lessonId: string) => {
     setCompletedLessons(prev => new Set([...prev, lessonId]));
     // Simulate XP gain
     const lesson = lessons.find(l => l.id === lessonId);
@@ -260,7 +262,7 @@ const BeginnerPage = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-600">Streak</p>
-                <p className="text-2xl font-bold text-orange-600">{currentStreak} days</p>
+                <p className="text-2xl font-bold text-orange-600">7 days</p>
               </div>
             </div>
           </div>
@@ -317,8 +319,8 @@ const BeginnerPage = () => {
               onChange={(e) => setSelectedTag(e.target.value)}
               className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             >
-              {allTags.map(tag => (
-                <option key={tag} value={tag}>
+              {allTags.map((tag, i) => (
+                <option key={i} value={tag}>
                   {tag === 'all' ? 'All Topics' : tag}
                 </option>
               ))}
@@ -348,7 +350,7 @@ const BeginnerPage = () => {
 
         {/* Lessons Grid/List */}
         <div className={view === 'grid' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-          {filteredLessons.map((lesson, index) => (
+          {filteredLessons.map((lesson) => (
             <LessonCard
               key={lesson.id}
               lesson={lesson}
@@ -400,7 +402,7 @@ const BeginnerPage = () => {
 };
 
 // Lesson Card Component
-const LessonCard = ({ lesson, view, isCompleted, onComplete }) => {
+const LessonCard = ({ lesson, view, isCompleted, onComplete }: { lesson: Lesson, view: string, isCompleted: boolean, onComplete: () => void }) => {
   const isLocked = !lesson.isUnlocked;
 
   const cardClass = view === 'grid'
@@ -545,7 +547,7 @@ const LessonCard = ({ lesson, view, isCompleted, onComplete }) => {
   );
 };
 
-const getDifficultyColor = (difficulty) => {
+const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
     case 'Essential': return 'bg-blue-100 text-blue-800 border-blue-200';
     case 'Beginner': return 'bg-green-100 text-green-800 border-green-200';

@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 // Tooltip Component
-const Tooltip = ({ word, translation, definition, transliteration, children }) => {
+const Tooltip = ({ word, translation, definition, transliteration, children }: { word: string, translation: string, definition: string, transliteration: string, children: React.ReactNode }) => {
     const [isVisible, setIsVisible] = useState(false);
 
     return (
@@ -36,7 +36,7 @@ const Tooltip = ({ word, translation, definition, transliteration, children }) =
 };
 
 // ProgressBar Component
-const ProgressBar = ({ current, total }) => {
+const ProgressBar = ({ current, total }: { current: number, total: number }) => {
     const percentage = (current / total) * 100;
     return (
         <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -54,13 +54,13 @@ const ReadingTimer = () => {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        let interval = null;
+        let interval: NodeJS.Timeout | null = null;
         if (isActive) {
             interval = setInterval(() => setSeconds(s => s + 1), 1000);
         } else {
-            clearInterval(interval);
+            if (interval) clearInterval(interval);
         }
-        return () => clearInterval(interval);
+        return () => { if (interval) clearInterval(interval); };
     }, [isActive]);
 
     const toggle = () => setIsActive(!isActive);
@@ -69,15 +69,15 @@ const ReadingTimer = () => {
         setIsActive(false);
     };
 
-    const formatTime = (s) => {
-        const m = Math.floor(s / 60);
-        const sec = s % 60;
+    const formatTime = (s: string) => {
+        const m = Math.floor(Number(s) / 60);
+        const sec = Number(s) % 60;
         return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
     };
 
     return (
         <div className="flex items-center gap-3 bg-gradient-to-r from-purple-100 to-pink-100 p-3 rounded-lg border border-purple-200">
-            <div className="text-2xl font-mono font-bold text-purple-700">{formatTime(seconds)}</div>
+            <div className="text-2xl font-mono font-bold text-purple-700">{formatTime(seconds.toString())}</div>
             <button
                 onClick={toggle}
                 className="p-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full transition-colors"
@@ -105,7 +105,7 @@ const CambodiaEconomyArticle = () => {
     const totalWords = 18; // Total vocabulary words
     const learnedWords = clickedWords.size;
 
-    const handleWordClick = (word) => {
+    const handleWordClick = (word: string) => {
         setClickedWords(prev => new Set([...prev, word]));
     };
 
@@ -187,7 +187,7 @@ const CambodiaEconomyArticle = () => {
                         </h1>
 
                         <h2 className="text-xl text-gray-600 font-medium mb-4">
-                            Cambodia's Economic Recovery After the COVID-19 Crisis
+                            Cambodia&apos;s Economic Recovery After the COVID-19 Crisis
                         </h2>
 
                         <div className="flex items-center gap-4 text-sm text-gray-500">
@@ -254,7 +254,7 @@ const CambodiaEconomyArticle = () => {
                             <Tooltip
                                 word="សេដ្ឋកិច្ច"
                                 translation="economy"
-                                definition="Cambodia's financial and production system."
+                                definition="Cambodia&apos;s financial and production system."
                                 transliteration="sed-tha-kech"
                             >
                                 <button
@@ -339,7 +339,7 @@ const CambodiaEconomyArticle = () => {
                             <Tooltip
                                 word="សេដ្ឋកិច្ច"
                                 translation="economy"
-                                definition="Cambodia's financial state."
+                                definition="Cambodia&apos;s financial state."
                                 transliteration="sed-tha-kech"
                             >
                                 <button
@@ -518,17 +518,17 @@ const CambodiaEconomyArticle = () => {
                             </div>
                             <div className="text-lg leading-8 space-y-6 text-gray-700">
                                 <p>
-                                    A new analysis shows that Cambodia's economy is starting to recover from the COVID-19 crisis. After a
+                                    A new analysis shows that Cambodia&apos;s economy is starting to recover from the COVID-19 crisis. After a
                                     steep decline in 2020, sectors like agriculture, construction, and tourism have begun showing positive signs.
                                 </p>
                                 <p>
-                                    The World Bank reports that Cambodia's economic growth may reach 5.5% this year, due to increased exports and foreign investment. The government has introduced strategies to support local industries and modern technology.
+                                    The World Bank reports that Cambodia&apos;s economic growth may reach 5.5% this year, due to increased exports and foreign investment. The government has introduced strategies to support local industries and modern technology.
                                 </p>
                                 <p>
                                     Still, challenges remain. Analysts highlight the rising costs of fertilizer and fuel, which could hinder growth. Social and political issues may also impact investor trust.
                                 </p>
                                 <p>
-                                    Experts recommend investing in human resource development through education and skill training. These are key to strengthening economic stability and boosting Cambodia's regional competitiveness.
+                                    Experts recommend investing in human resource development through education and skill training. These are key to strengthening economic stability and boosting Cambodia&apos;s regional competitiveness.
                                 </p>
                             </div>
                         </div>
@@ -582,7 +582,7 @@ const CambodiaEconomyArticle = () => {
                             <div className="mt-8 bg-gradient-to-r from-green-400 to-blue-500 text-white p-6 rounded-xl shadow-lg text-center">
                                 <div className="text-4xl mb-2">🎉</div>
                                 <h3 className="text-2xl font-bold mb-2">Congratulations!</h3>
-                                <p className="text-lg">You've learned all vocabulary words in this article!</p>
+                                <p className="text-lg">You&apos;ve learned all vocabulary words in this article!</p>
                             </div>
                         )}
                     </div>

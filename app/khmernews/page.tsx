@@ -3,7 +3,7 @@
 'use client';
 
 import Link from 'next/link';
-import { BookOpen, Globe, Search, Languages, ArrowRight, Sparkles, PlayCircle } from 'lucide-react';
+import { BookOpen, ArrowRight, Sparkles, PlayCircle } from 'lucide-react';
 
 export default function HomePage() {
     return (
@@ -35,7 +35,6 @@ export default function HomePage() {
                     </div>
 
                     <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <Languages className="mx-auto text-indigo-600 mb-4" size={36} />
                         <h3 className="text-xl font-semibold mb-2">Side-by-Side Translations</h3>
                         <p className="text-gray-600">See Khmer passages with English translations, definitions, and pronunciation guides instantly available.</p>
                     </div>

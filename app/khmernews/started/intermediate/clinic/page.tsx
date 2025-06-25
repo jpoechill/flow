@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from "react";
-import { BookOpen, Volume2, CheckCircle } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 const VisitingTheClinicPage = () => {
     const [showTranslation, setShowTranslation] = useState(false);
@@ -17,7 +17,7 @@ const VisitingTheClinicPage = () => {
         { kh: "សីតុណ្ហភាព", en: "Temperature", tr: "say-toan-ha-pheap" }
     ];
 
-    const ArticleLine = ({ khmer, english }) => (
+    const ArticleLine = ({ khmer, english }: { khmer: string, english: string }) => (
         <p className="text-[20px] leading-9">
             <span className="block mb-1">
                 {khmer.split(" ").map((word, i) => {

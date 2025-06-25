@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { BookOpen, Eye, EyeOff, Target, Volume2, CheckCircle } from 'lucide-react';
+import { BookOpen, Eye, EyeOff, Target, CheckCircle } from 'lucide-react';
 
 const NewsPracticePage = () => {
     const [showTranslation, setShowTranslation] = useState(false);
@@ -13,7 +13,7 @@ const NewsPracticePage = () => {
             title: 'ការផ្លាស់ប្តូរក្នុងវិស័យសុខាភិបាល',
             subtitle: 'Health Sector Reform in Cambodia',
             summary: 'អត្ថបទនេះពិភាក្សាអំពីការផ្លាស់ប្តូរផ្នែកសុខាភិបាលនៅកម្ពុជា និងអនុសាសន៍សំខាន់ៗ។',
-            english: 'This article discusses changes in Cambodia’s health sector and important recommendations.'
+            english: 'This article discusses changes in Cambodia&apos;s health sector and important recommendations.'
         },
         {
             id: 2,
@@ -25,7 +25,7 @@ const NewsPracticePage = () => {
         // Add more articles as needed
     ];
 
-    const toggleRead = (id) => {
+    const toggleRead = (id: number) => {
         setReadArticles(prev => {
             const newSet = new Set(prev);
             if (newSet.has(id)) {

@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Play, Volume2, Search, BookOpen, Heart, Users, AlertTriangle, MessageCircle, CheckCircle, X, RotateCcw, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { Play, Volume2, Search, BookOpen, Heart, Users, AlertTriangle, MessageCircle, CheckCircle, X, Star } from 'lucide-react';
 
 const MedicalTerminologyLesson = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,7 +13,7 @@ const MedicalTerminologyLesson = () => {
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [completedItems, setCompletedItems] = useState(new Set());
   const [favorites, setFavorites] = useState(new Set());
-  const [audioPlaying, setAudioPlaying] = useState(null);
+  const [audioPlaying, setAudioPlaying] = useState<string | null>(null);
 
   const sections = [
     {
@@ -131,7 +131,7 @@ const MedicalTerminologyLesson = () => {
     { id: 'emergency', name: 'Emergency', icon: <AlertTriangle className="w-4 h-4" /> },
   ];
 
-  const simulateAudio = (text) => {
+  const simulateAudio = (text: string) => {
     setAudioPlaying(text);
     // Simulate audio playback
     setTimeout(() => setAudioPlaying(null), 1500);
@@ -145,7 +145,7 @@ const MedicalTerminologyLesson = () => {
     setScore({ correct: 0, total: 0 });
   };
 
-  const generateMultipleChoiceOptions = (correctAnswer) => {
+  const generateMultipleChoiceOptions = (correctAnswer: string) => {
     // Get all other entries except the current one
     const otherEntries = allEntries.filter(entry => entry.english !== correctAnswer);
 
@@ -162,7 +162,7 @@ const MedicalTerminologyLesson = () => {
     return allOptions;
   };
 
-  const checkAnswer = (selectedAnswer) => {
+  const checkAnswer = (selectedAnswer: string) => {
     const currentEntry = allEntries[currentPracticeIndex];
     const isCorrect = selectedAnswer === currentEntry.english;
 
@@ -189,7 +189,7 @@ const MedicalTerminologyLesson = () => {
     }
   };
 
-  const toggleFavorite = (khmer) => {
+  const toggleFavorite = (khmer: string) => {
     setFavorites(prev => {
       const newFavorites = new Set(prev);
       if (newFavorites.has(khmer)) {
@@ -201,7 +201,7 @@ const MedicalTerminologyLesson = () => {
     });
   };
 
-  const getDifficultyColor = (difficulty) => {
+  const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'easy': return 'bg-green-100 text-green-800';
       case 'medium': return 'bg-yellow-100 text-yellow-800';
