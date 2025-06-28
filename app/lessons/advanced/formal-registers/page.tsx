@@ -35,7 +35,7 @@ interface PracticeQuestion {
     explanation: string;
 }
 
-const ComplexSentencesPage = () => {
+const FormalRegistersPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState<'all' | 'Basic' | 'Intermediate' | 'Advanced'>('all');
     const [favorites, setFavorites] = useState(new Set<string>());
@@ -47,117 +47,117 @@ const ComplexSentencesPage = () => {
 
     const vocabulary: VocabularyItem[] = [
         {
-            khmer: 'ខ្ញុំគិតថា',
-            transliteration: 'khnhom kit tha',
-            english: 'I think that',
+            khmer: 'សូមអនុញ្ញាត',
+            transliteration: 'som onhnhieat',
+            english: 'Please allow me',
             category: 'Basic',
-            example: 'ខ្ញុំគិតថាការសិក្សាភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់',
+            example: 'សូមអនុញ្ញាតឱ្យខ្ញុំបង្ហាញពីការវិភាគនេះ',
             isFavorite: false
         },
         {
-            khmer: 'ដែលជាការពិត',
-            transliteration: 'del chea kar pit',
-            english: 'which is true',
+            khmer: 'ដោយគោរព',
+            transliteration: 'doy korop',
+            english: 'Respectfully',
             category: 'Basic',
-            example: 'ខ្ញុំគិតថាការសិក្សាភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់ ដែលជាការពិត',
+            example: 'ដោយគោរព ខ្ញុំសូមថ្លែងអំណរគុណ',
             isFavorite: false
         },
         {
-            khmer: 'ទោះបីជា',
-            transliteration: 'toh bae chea',
-            english: 'even though',
+            khmer: 'ជាការពិតណាស់',
+            transliteration: 'chea kar pit nas',
+            english: 'Indeed',
+            category: 'Basic',
+            example: 'ជាការពិតណាស់ ការសិក្សាភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់',
+            isFavorite: false
+        },
+        {
+            khmer: 'ដោយពិតណាស់',
+            transliteration: 'doy pit nas',
+            english: 'Certainly',
             category: 'Intermediate',
-            example: 'ទោះបីជាខ្ញុំជាជនបរទេស ខ្ញុំក៏ចង់រៀនភាសាខ្មែរដែរ',
+            example: 'ដោយពិតណាស់ យើងត្រូវធ្វើការវិភាគនេះឱ្យបានល្អ',
             isFavorite: false
         },
         {
-            khmer: 'ដោយសារ',
-            transliteration: 'doy sa',
-            english: 'because of',
+            khmer: 'ជាការពិតណាស់ដែល',
+            transliteration: 'chea kar pit nas del',
+            english: 'It is indeed true that',
             category: 'Intermediate',
-            example: 'ខ្ញុំមិនអាចមកបានដោយសារការងាររវល់',
+            example: 'ជាការពិតណាស់ដែលការសិក្សាភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់',
             isFavorite: false
         },
         {
-            khmer: 'ដូច្នេះ',
-            transliteration: 'dauchneh',
-            english: 'therefore',
+            khmer: 'ដោយពិតណាស់ដែល',
+            transliteration: 'doy pit nas del',
+            english: 'Certainly that',
             category: 'Intermediate',
-            example: 'ខ្ញុំចង់រៀនភាសាខ្មែរ ដូច្នេះខ្ញុំត្រូវអនុវត្តជាប្រចាំ',
+            example: 'ដោយពិតណាស់ដែលយើងត្រូវធ្វើការវិភាគនេះឱ្យបានល្អ',
             isFavorite: false
         },
         {
-            khmer: 'ដែលនៅក្នុង',
-            transliteration: 'del nov knong',
-            english: 'which is in',
+            khmer: 'ជាការពិតណាស់ដែលយើងត្រូវធ្វើ',
+            transliteration: 'chea kar pit nas del yeung trouv thveu',
+            english: 'It is indeed true that we must do',
             category: 'Advanced',
-            example: 'ខ្ញុំចង់ទៅកាន់ប្រទេសដែលនៅក្នុងអាស៊ីអាគ្នេយ៍',
+            example: 'ជាការពិតណាស់ដែលយើងត្រូវធ្វើការវិភាគនេះឱ្យបានល្អ',
             isFavorite: false
         },
         {
-            khmer: 'ដែលធ្វើឱ្យ',
-            transliteration: 'del thveu aoy',
-            english: 'which makes',
+            khmer: 'ដោយពិតណាស់ដែលយើងត្រូវធ្វើឱ្យបានល្អ',
+            transliteration: 'doy pit nas del yeung trouv thveu aoy ban la',
+            english: 'Certainly that we must do well',
             category: 'Advanced',
-            example: 'ការសិក្សាជាប្រចាំដែលធ្វើឱ្យខ្ញុំកាន់តែចេះភាសាខ្មែរ',
+            example: 'ដោយពិតណាស់ដែលយើងត្រូវធ្វើការវិភាគនេះឱ្យបានល្អ',
             isFavorite: false
         },
         {
-            khmer: 'ដែលជាការពិតណាស់',
-            transliteration: 'del chea kar pit nas',
-            english: 'which is absolutely true',
+            khmer: 'ជាការពិតណាស់ដែលយើងត្រូវធ្វើឱ្យបានល្អជាប្រចាំ',
+            transliteration: 'chea kar pit nas del yeung trouv thveu aoy ban la chea pracham',
+            english: 'It is indeed true that we must do well consistently',
             category: 'Advanced',
-            example: 'ការរៀនភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់ ដែលជាការពិតណាស់',
+            example: 'ជាការពិតណាស់ដែលយើងត្រូវធ្វើការវិភាគនេះឱ្យបានល្អជាប្រចាំ',
             isFavorite: false
         },
         {
-            khmer: 'ដែលជាការពិតណាស់ដែល',
-            transliteration: 'del chea kar pit nas del',
-            english: 'which is absolutely true that',
+            khmer: 'ដោយពិតណាស់ដែលយើងត្រូវធ្វើឱ្យបានល្អជាប្រចាំដើម្បីការអភិវឌ្ឍន៍',
+            transliteration: 'doy pit nas del yeung trouv thveu aoy ban la chea pracham daembi kar aphivoadth',
+            english: 'Certainly that we must do well consistently for development',
             category: 'Advanced',
-            example: 'ការរៀនភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់ ដែលជាការពិតណាស់ដែលយើងត្រូវធ្វើ',
-            isFavorite: false
-        },
-        {
-            khmer: 'ដែលជាការពិតណាស់ដែលយើងត្រូវធ្វើ',
-            transliteration: 'del chea kar pit nas del yeung trouv thveu',
-            english: 'which is absolutely true that we must do',
-            category: 'Advanced',
-            example: 'ការរៀនភាសាខ្មែរគឺជាការវិភាគដ៏សំខាន់ ដែលជាការពិតណាស់ដែលយើងត្រូវធ្វើ',
+            example: 'ដោយពិតណាស់ដែលយើងត្រូវធ្វើការវិភាគនេះឱ្យបានល្អជាប្រចាំដើម្បីការអភិវឌ្ឍន៍',
             isFavorite: false
         }
     ];
 
     const practiceQuestions: PracticeQuestion[] = [
         {
-            question: 'How do you say "I think that" in Khmer?',
-            options: ['ខ្ញុំគិតថា', 'ខ្ញុំជឿថា', 'ខ្ញុំដឹងថា', 'ខ្ញុំឃើញថា'],
+            question: 'How do you say "Please allow me" in formal Khmer?',
+            options: ['សូមអនុញ្ញាត', 'សូមអភ័យទោស', 'សូមអរគុណ', 'សូមជំរាបសួរ'],
             correctAnswer: 0,
-            explanation: 'ខ្ញុំគិតថា (khnhom kit tha) means "I think that" and is used to introduce opinions or thoughts.'
+            explanation: 'សូមអនុញ្ញាត (som onhnhieat) means "Please allow me" and is used in formal situations.'
         },
         {
-            question: 'What does "ទោះបីជា" mean?',
-            options: ['Because', 'However', 'Even though', 'Therefore'],
-            correctAnswer: 2,
-            explanation: 'ទោះបីជា (toh bae chea) means "even though" and is used to show contrast.'
-        },
-        {
-            question: 'Which phrase means "therefore" in Khmer?',
-            options: ['ដោយសារ', 'ដូច្នេះ', 'ទោះបីជា', 'ដែលជាការពិត'],
+            question: 'What does "ដោយគោរព" mean?',
+            options: ['Thank you', 'Respectfully', 'Please', 'Excuse me'],
             correctAnswer: 1,
-            explanation: 'ដូច្នេះ (dauchneh) means "therefore" and is used to show consequence.'
+            explanation: 'ដោយគោរព (doy korop) means "Respectfully" and is used to show politeness.'
         },
         {
-            question: 'What is the correct way to say "because of" in Khmer?',
-            options: ['ដោយសារ', 'ដែលជាការពិត', 'ទោះបីជា', 'ដូច្នេះ'],
+            question: 'Which phrase means "Indeed" in formal Khmer?',
+            options: ['ជាការពិតណាស់', 'ដោយពិតណាស់', 'ជាការពិត', 'ដោយគោរព'],
             correctAnswer: 0,
-            explanation: 'ដោយសារ (doy sa) means "because of" and is used to explain reasons.'
+            explanation: 'ជាការពិតណាស់ (chea kar pit nas) means "Indeed" and is used to emphasize truth.'
         },
         {
-            question: 'How do you say "which makes" in Khmer?',
-            options: ['ដែលធ្វើឱ្យ', 'ដែលជាការពិត', 'ដែលនៅក្នុង', 'ដែលជាការពិតណាស់'],
+            question: 'What is the correct way to say "Certainly" in formal Khmer?',
+            options: ['ដោយពិតណាស់', 'ជាការពិតណាស់', 'ដោយគោរព', 'សូមអនុញ្ញាត'],
             correctAnswer: 0,
-            explanation: 'ដែលធ្វើឱ្យ (del thveu aoy) means "which makes" and is used to show cause and effect.'
+            explanation: 'ដោយពិតណាស់ (doy pit nas) means "Certainly" and is used to express agreement.'
+        },
+        {
+            question: 'How do you say "It is indeed true that" in formal Khmer?',
+            options: ['ជាការពិតណាស់ដែល', 'ដោយពិតណាស់ដែល', 'ជាការពិតដែល', 'ដោយគោរពដែល'],
+            correctAnswer: 0,
+            explanation: 'ជាការពិតណាស់ដែល (chea kar pit nas del) means "It is indeed true that" and is used in formal writing.'
         }
     ];
 
@@ -249,11 +249,11 @@ const ComplexSentencesPage = () => {
 
                     <div className="text-center mb-6">
                         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                            🏗️ Complex Sentence Structures
+                            📚 Formal & Literary Registers
                         </h1>
                         <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-                            Master advanced Khmer grammar patterns and build fluency with compound and complex sentences.
-                            Learn to express sophisticated thoughts and ideas with proper structure.
+                            Explore elegant Khmer used in speeches, writing, and literature.
+                            Master formal communication and literary expression for sophisticated contexts.
                         </p>
                     </div>
 
@@ -261,12 +261,12 @@ const ComplexSentencesPage = () => {
                         <div className="bg-gray-50 rounded-lg p-4">
                             <BookOpen className="w-6 h-6 text-red-500 mx-auto mb-2" />
                             <p className="text-sm text-gray-600">Sections</p>
-                            <p className="text-lg font-bold text-gray-900">4</p>
+                            <p className="text-lg font-bold text-gray-900">3</p>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-4">
                             <Clock className="w-6 h-6 text-red-500 mx-auto mb-2" />
                             <p className="text-sm text-gray-600">Duration</p>
-                            <p className="text-lg font-bold text-gray-900">45 min</p>
+                            <p className="text-lg font-bold text-gray-900">40 min</p>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-4">
                             <Target className="w-6 h-6 text-red-500 mx-auto mb-2" />
@@ -276,7 +276,7 @@ const ComplexSentencesPage = () => {
                         <div className="bg-gray-50 rounded-lg p-4">
                             <Star className="w-6 h-6 text-red-500 mx-auto mb-2" />
                             <p className="text-sm text-gray-600">XP Reward</p>
-                            <p className="text-lg font-bold text-gray-900">50</p>
+                            <p className="text-lg font-bold text-gray-900">45</p>
                         </div>
                     </div>
                 </div>
@@ -284,11 +284,11 @@ const ComplexSentencesPage = () => {
                 {/* Navigation */}
                 <div className="flex items-center justify-between mb-8">
                     <Link
-                        href="/lessons/advanced/formal-registers"
+                        href="/lessons/advanced/complex-sentences"
                         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
                     >
                         <ArrowLeft className="w-4 h-4" />
-                        Previous: Formal Registers
+                        Previous: Complex Sentences
                     </Link>
                     <Link
                         href="/lessons/advanced/transitions"
@@ -306,7 +306,7 @@ const ComplexSentencesPage = () => {
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                             <input
                                 type="text"
-                                placeholder="Search vocabulary, phrases, or concepts..."
+                                placeholder="Search formal expressions, literary terms, or concepts..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
@@ -327,11 +327,11 @@ const ComplexSentencesPage = () => {
 
                 {/* Vocabulary Sections */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                    {/* Basic Structures */}
+                    {/* Basic Formal Expressions */}
                     <div className="bg-white rounded-2xl shadow-lg p-6">
                         <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                            Basic Structures
+                            Basic Formal Expressions
                         </h3>
                         <div className="space-y-4">
                             {filteredVocabulary.filter(item => item.category === 'Basic').map((item, index) => (
@@ -362,11 +362,11 @@ const ComplexSentencesPage = () => {
                         </div>
                     </div>
 
-                    {/* Intermediate Structures */}
+                    {/* Intermediate Formal Language */}
                     <div className="bg-white rounded-2xl shadow-lg p-6">
                         <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                             <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                            Intermediate Structures
+                            Intermediate Formal Language
                         </h3>
                         <div className="space-y-4">
                             {filteredVocabulary.filter(item => item.category === 'Intermediate').map((item, index) => (
@@ -398,11 +398,11 @@ const ComplexSentencesPage = () => {
                     </div>
                 </div>
 
-                {/* Advanced Structures */}
+                {/* Advanced Literary Expressions */}
                 <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
                     <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                         <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                        Advanced Structures
+                        Advanced Literary Expressions
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {filteredVocabulary.filter(item => item.category === 'Advanced').map((item, index) => (
@@ -436,8 +436,8 @@ const ComplexSentencesPage = () => {
                 {/* Practice Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
                     <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Practice Complex Sentences</h3>
-                        <p className="text-gray-600">Test your understanding of advanced Khmer sentence structures</p>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Practice Formal Language</h3>
+                        <p className="text-gray-600">Test your understanding of formal Khmer expressions and literary registers</p>
                     </div>
 
                     {!showPractice && !showResults && (
@@ -534,7 +534,7 @@ const ComplexSentencesPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="text-center">
                             <div className="text-3xl font-bold text-red-500 mb-2">{filteredVocabulary.length}</div>
-                            <p className="text-gray-600">Vocabulary Items</p>
+                            <p className="text-gray-600">Formal Expressions</p>
                         </div>
                         <div className="text-center">
                             <div className="text-3xl font-bold text-purple-500 mb-2">{favorites.size}</div>
@@ -551,4 +551,4 @@ const ComplexSentencesPage = () => {
     );
 };
 
-export default ComplexSentencesPage;
+export default FormalRegistersPage; 
